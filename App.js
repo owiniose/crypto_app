@@ -5,6 +5,8 @@ import HomeHeader from './components/HomeHeader';
 import MiddleCard from './components/MiddleCard';
 import TradingView from './components/TradingView';
 import { DATA } from './constants/data';
+import { SAMPLE_DATA  } from './constants/sampledata';
+
 
 export default function App() {
   return (
@@ -20,7 +22,17 @@ export default function App() {
          showsHorizontalScrollIndicator={false}
         />
       </View>
-      <TradingView/>
+      <View  style ={{
+        
+        zIndex:0,
+        }} >
+      <FlatList
+         data={SAMPLE_DATA}
+         showsHorizontalScrollIndicator={false}
+         renderItem={({item}) => <TradingView data={item} />}
+         keyExtractor ={(item) => item.id}
+        />
+      </View>
       <Text style={[tw`p-5`]}>
         Open up App.js to star  on your app!</Text>
 
