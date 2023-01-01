@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Divider } from '@rneui/themed';
 
 const TradingView = ({ data }) => {
 
@@ -8,46 +9,49 @@ const TradingView = ({ data }) => {
     let decimal = Math.trunc(amount)
 
   return (
+   
     <View style={{
-        backgroundColor: "black",
-        marginHorizontal:2,
-        borderRadius:20,
-        
-        
+            paddingTop:5,
+            paddingLeft:20
     }}>
         <View style={{
             flexDirection:'row',
             paddingVertical: 10,
             paddingHorizontal: 20,
-            justifyContent:'space-between'
-            
+                    
         }}
         >
 
-            
+            <View style={{
+                backgroundColor:'white',
+                padding:10,
+                borderRadius:10 
+            }} >
                    
                     <Image
                 source={data.image} 
                 resizeMode="contain"
                 style={{
-                    height: 80,
-                    width: 80,
-                    
+                    height: 30,
+                    width: 30,
                 }}               
                 />
-    
+            </View>
 
                 <View style={{
                     flexDirection:'column',
                     alignSelf:'center',
-                    marginRight:100
+                   marginLeft:10
 
                 }} >
 
 
                 <Text 
                 style={{
-                    color:"white"
+                    color:"white",
+                    fontWeight:'900',
+                    fontSize: 15,
+                    letterSpacing:1
                 }}
                 >{data.name}</Text>
 
@@ -57,19 +61,22 @@ const TradingView = ({ data }) => {
                 style={{
                     flexDirection:'row',
                     alignSelf:'center',
-
                 }}
                 >
                 <Text 
                 style={{
-                    color:"white",
-                    marginRight:10
+                    color: '#B3B6B7',
+                    marginRight:10,
+                    fontSize:13,
+                    letterSpacing:1
                 }}
-                >{data.current_price}</Text>
+                >${data.current_price}</Text>
 
                 <Text 
                 style={{
-                    color:"green"
+                    color:"green",
+                    fontSize:13,
+
                 }}
                 >{data.price_change_percentage_24h}</Text>
                </View>
@@ -78,27 +85,48 @@ const TradingView = ({ data }) => {
 
 
             <View style={{
+                flex: 1,
                 alignSelf:'center',
-                alignItems:'flex-end'
+                alignContent:'flex-end',
+                marginRight:15
+                
             }} >
                 <Text
                 style={{
-                    color:"white"
+                    color:"white",
+                    alignSelf:'flex-end',
+                    fontWeight:'900',
+                    fontSize: 15,
+                    letterSpacing:1
+
                 }}
                 >{data.price_change_percentage_24h}</Text>
                 <Text
                 style={{
-                    color:"white"
+                    alignSelf:'flex-end',
+                    color: '#B3B6B7',
+                    
+                    fontSize:13,
+                    letterSpacing:1
                 }}
                 >{decimal}</Text>
                 </View>
+                
         </View>
-
-      <Text>TradingView</Text>
+      <Divider inset={true} color= "white" />
     </View>
+    
+    
   )
 }
 
 export default TradingView
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    overlay: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: '#A569BD',
+        opacity:0.05,
+        borderRadius: 25,
+      }
+})

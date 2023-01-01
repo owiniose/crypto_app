@@ -2,10 +2,12 @@ import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import tw from 'twrnc';
 import Actions from './components/Actions';
 import HomeHeader from './components/HomeHeader';
+import Menu from './components/Menu';
 import MiddleCard from './components/MiddleCard';
 import TradingView from './components/TradingView';
 import { DATA } from './constants/data';
 import { SAMPLE_DATA  } from './constants/sampledata';
+import {BlurView} from 'expo-blur'
 
 
 export default function App() {
@@ -14,6 +16,7 @@ export default function App() {
       <HomeHeader/>
       <MiddleCard/>
       <View style ={{zIndex:0}}>
+       
         <FlatList
          data={DATA}
          horizontal={true}
@@ -21,10 +24,15 @@ export default function App() {
          keyExtractor ={(item) => item.id}
          showsHorizontalScrollIndicator={false}
         />
+       
       </View>
       <View  style ={{
-        
+        flex: 1,
         zIndex:0,
+        backgroundColor:"black",
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        marginHorizontal:2,  
         }} >
       <FlatList
          data={SAMPLE_DATA}
@@ -33,8 +41,12 @@ export default function App() {
          keyExtractor ={(item) => item.id}
         />
       </View>
-      <Text style={[tw`p-5`]}>
-        Open up App.js to star  on your app!</Text>
+
+      <BlurView intensity={90}>
+        <View>
+      <Menu/>
+      </View>
+      </BlurView>      
 
     </SafeAreaView>
   );

@@ -63,6 +63,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#A569BD',
         opacity:0.05,
         borderRadius: 25,
-
       }
 })
