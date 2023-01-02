@@ -7,10 +7,20 @@ import MiddleCard from './components/MiddleCard';
 import TradingView from './components/TradingView';
 import { DATA } from './constants/data';
 import { SAMPLE_DATA  } from './constants/sampledata';
-import {BlurView} from 'expo-blur'
+import {BlurView} from 'expo-blur';
+import { useFonts } from 'expo-font';
 
 
-export default function App() {
+
+  const App = () => {
+
+  const [loaded] = useFonts({
+    KarlaMedium: require('./assets/fonts/Karla-Medium.ttf'),
+    KarlaBold: require('./assets/fonts/Karla-Bold.ttf'),
+    KarlaRegular: require('./assets/fonts/Karla-Medium.ttf'),
+  });
+
+  if(!loaded) return null;
   return (
     <SafeAreaView style ={[tw`bg-gray-800`,styles.container]}>
       <HomeHeader/>
@@ -29,10 +39,10 @@ export default function App() {
       <View  style ={{
         flex: 1,
         zIndex:0,
-        backgroundColor:"black",
+        backgroundColor:"#06080e",
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        marginHorizontal:2,  
+        paddingTop:16 
         }} >
       <FlatList
          data={SAMPLE_DATA}
@@ -55,6 +65,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#13141D"
   },
   header: {
     backgroundColor: 'black',
@@ -62,3 +73,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;

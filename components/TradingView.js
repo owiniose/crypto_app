@@ -6,19 +6,22 @@ const TradingView = ({ data }) => {
 
     const amount = 100 * data.current_price
 
+    let price = data.current_price
+
+    const newprice = price.toLocaleString("en-US");
+
     let decimal = Math.trunc(amount)
 
   return (
    
     <View style={{
             paddingTop:5,
-            paddingLeft:20
+            paddingLeft:24
+           
     }}>
         <View style={{
             flexDirection:'row',
-            paddingVertical: 10,
-            paddingHorizontal: 20,
-                    
+            paddingVertical: 8,                    
         }}
         >
 
@@ -32,8 +35,8 @@ const TradingView = ({ data }) => {
                 source={data.image} 
                 resizeMode="contain"
                 style={{
-                    height: 30,
-                    width: 30,
+                    height: 40,
+                    width: 40,
                 }}               
                 />
             </View>
@@ -41,7 +44,7 @@ const TradingView = ({ data }) => {
                 <View style={{
                     flexDirection:'column',
                     alignSelf:'center',
-                   marginLeft:10
+                   marginLeft:8
 
                 }} >
 
@@ -49,9 +52,8 @@ const TradingView = ({ data }) => {
                 <Text 
                 style={{
                     color:"white",
-                    fontWeight:'900',
-                    fontSize: 15,
-                    letterSpacing:1
+                    fontFamily:'KarlaBold',
+                    fontSize:16,
                 }}
                 >{data.name}</Text>
 
@@ -66,17 +68,17 @@ const TradingView = ({ data }) => {
                 <Text 
                 style={{
                     color: '#B3B6B7',
-                    marginRight:10,
+                    marginRight:6,
+                    fontFamily:'KarlaMedium',
                     fontSize:13,
-                    letterSpacing:1
                 }}
-                >${data.current_price}</Text>
+                >${newprice}</Text>
 
                 <Text 
                 style={{
                     color:"green",
                     fontSize:13,
-
+                    fontFamily:'KarlaBold',
                 }}
                 >{data.price_change_percentage_24h}</Text>
                </View>
@@ -88,16 +90,15 @@ const TradingView = ({ data }) => {
                 flex: 1,
                 alignSelf:'center',
                 alignContent:'flex-end',
-                marginRight:15
+                marginRight:24
                 
             }} >
                 <Text
                 style={{
                     color:"white",
                     alignSelf:'flex-end',
-                    fontWeight:'900',
-                    fontSize: 15,
-                    letterSpacing:1
+                    fontFamily:'KarlaBold',
+                    fontSize:16,
 
                 }}
                 >{data.price_change_percentage_24h}</Text>
@@ -105,15 +106,17 @@ const TradingView = ({ data }) => {
                 style={{
                     alignSelf:'flex-end',
                     color: '#B3B6B7',
-                    
-                    fontSize:13,
-                    letterSpacing:1
+                    fontFamily:'KarlaMedium',
+                fontSize:13,
                 }}
-                >{decimal}</Text>
+                >${decimal}</Text>
                 </View>
                 
         </View>
-      <Divider inset={true} color= "white" />
+      <Divider 
+       color= "#B3B6B7" style={{
+        opacity:0.3
+       }} />
     </View>
     
     
